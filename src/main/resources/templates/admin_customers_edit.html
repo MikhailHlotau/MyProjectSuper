@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #336699;
+            font-size: 32px;
+            margin: 0;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: inline-block;
+            width: 120px;
+            text-align: right;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 200px;
+            height: 30px;
+            padding: 5px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            margin-top: 10px;
+            width: 100px;
+            height: 40px;
+            background-color: #336699;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .failed {
+            color: #cc0000;
+            font-size: 24px;
+            margin-top: 10px;
+        }
+
+        .invalid-message {
+            color: #cc0000;
+            font-size: 24px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>CUSTOMER EDITING</h1>
+<form th:action="@{/admin/customer/edit}" th:object="${customer}" method="post">
+    <div>
+        <label for="login">Login:</label>
+        <input type="text" id="login" name="login" th:field="*{login}" required>
+        <span style="color: red" th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></span><br>
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" th:field="*{password}" required>
+        <span style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span><br>
+    </div>
+    <div>
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" th:field="*{firstName}" required>
+        <span style="color: red" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span><br>
+    </div>
+    <div>
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" th:field="*{lastName}" required>
+        <span style="color: red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span><br>
+    </div>
+    <div>
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone" th:field="*{phone}" required>
+        <span style="color: red" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></span><br>
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" th:field="*{email}" required>
+        <span style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span><br>
+    </div>
+    <input type="submit" value="Edit">
+</form>
+<div th:if="${session.registrationInvalid}">
+    <p class="invalid-message">Failed to edit</p>
+</div>
+</body>
+</html>

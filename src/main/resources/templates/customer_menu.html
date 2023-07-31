@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #336699;
+            font-size: 32px;
+        }
+
+        .welcome {
+            color: #336699;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .customer {
+            color: #ff6600;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="submit"] {
+            margin-top: 10px;
+            width: 180px;
+            height: 40px;
+            background-color: #336699;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h1>WELCOME!</h1>
+<p class="welcome">Thank you for visiting:)</p>
+<p class="customer">Hello, customer <span th:text="${session.user.login}">[Username]</span>!</p>
+<form th:action="@{/admin/customer/}" method="GET">
+    <input type="hidden" name="command" value="FIND_ALL_MENU_ITEMS_COMMAND">
+    <input type="submit" value="View the list of dishes">
+</form>
+<form th:action="@{/FinalProjectEPAM/controller}" method="GET">
+    <input type="hidden" name="command" value="FIND_ALL_CUSTOMERS">
+    <input type="submit" value="Add dish">
+</form>
+<form th:action="@{/FinalProjectEPAM/controller}" method="GET">
+    <input type="hidden" name="command" value="LOGOUT">
+    <input type="submit" value="Change the dish">
+</form>
+<form th:action="@{/FinalProjectEPAM/controller}" method="GET">
+    <input type="hidden" name="command" value="LOGOUT">
+    <input type="submit" value="Remove dish">
+</form>
+<form method="get" th:action="@{/authentication/goToIndexPage}">
+    <input type="submit" value="SIGN OUT">
+</form>
+</body>
+</html>

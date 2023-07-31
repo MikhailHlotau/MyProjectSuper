@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #336699;
+            font-size: 32px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="submit"] {
+            margin-top: 10px;
+            width: 180px;
+            height: 40px;
+            background-color: #336699;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h1>CUSTOMERS</h1>
+<form method="get" th:action="@{/admin/customer/list}">
+    <input type="submit" value="View a list of customers">
+</form>
+<form method="get" th:action="@{/customer/goToRegistrationPage}">
+    <input type="submit" value="Add customer">
+</form>
+<form method="get" th:action="@{/admin/goToAdminCustomersEditPage}">
+    <input type="submit" value="Edit customer data">
+</form>
+<form method="get" th:action="@{/admin/goToAdminCustomersDeletePage}">
+    <input type="submit" value="Remove customers">
+</form>
+<form method="get" th:action="@{/admin/goToAdminMenuPage}">
+    <input type="submit" value="BACK">
+</form>
+</body>
+</html>
